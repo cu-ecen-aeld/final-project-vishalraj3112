@@ -1,6 +1,6 @@
 #!/bin/bash
 # Script to build image for qemu.
-# Author: Siddhant Jajoo.
+# Author: Siddhant Jajoo, Vishal Raj.
 
 git submodule init
 git submodule sync
@@ -224,4 +224,4 @@ fi
 #Qt5
 
 set -e
-bitbake core-image-base
+bitbake core-image-sato
