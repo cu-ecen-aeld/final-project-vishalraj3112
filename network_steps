@@ -1,0 +1,54 @@
+1. https://askubuntu.com/questions/62166/siocsifflags-operation-not-possible-due-to-rf-kill
+
+Soft-blocking
+
+The output to 'sudo rfkill list' shows that your network card is "soft-blocked".
+
+This could happen when the wireless card has been signalled to switch-off via the kernel.
+
+Try the following steps:
+
+    run in a terminal:
+
+    sudo rfkill unblock wifi; sudo rfkill unblock all
+
+    rerun sudo rfkill list to confirm that the card has been unblocked.
+
+    reboot
+
+    rerun sudo rfkill list again to confirm unblocking as been retained.
+
+    rerun sudo lshw -class network - you should now see that the kernel has recognised (or not) the wireless card.
+
+If the wireless kernel module has been recognised (it should not say "unclaimed"), Network Manager should now be able to see wireless networks that are available in your vacinity.
+
+
+
+2.https://askubuntu.com/questions/652864/wpa-supplicant-does-not-connect-with-ioctlsiocsiwencodeext-invalid-argument
+
+First of all, I think you'll have better luck if your router is set to use WPA2-AES and not TKIP.
+
+Second, I believe you are taking the long, complicated route when the short, easy route would work perfectly well. First, I suggest you back up your current wpa_supplicant.conf file:
+
+sudo mv /etc/wpa_supplicant/wpa_supplicant.conf  /etc/wpa_supplicant/wpa_supplicant.bak
+
+Next, I suggest you edit /etc/network/interfaces:
+
+auto lo
+iface lo inet loopback
+
+auto wlan0
+iface wlan0 inet static
+address 192.168.1.150
+netmask 255.255.255.0
+gateway 192.168.1.1
+wpa-essid MYESSID12345
+wpa-psk MYPASSWORD$1234567
+
+Of course, substitute your details here. Restart the interface:
+
+sudo ifdown wlan0 && sudo ifup -v wlan0
+
+Test:
+
+ping -c3 www.ubuntu.com
