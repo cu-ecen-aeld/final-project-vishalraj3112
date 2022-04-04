@@ -5,6 +5,6 @@ Todo:
 4. Just download Qt creator on Linux and manually put the files in yocto.
 Problems:
 1. Wifi not working with Qt image.
-2. ssh not happening with ubuntu, working with putty.
+2. ssh not happening with ubuntu, working with putty ---> Solved, reason(changes in sshd_conf and login as ssh root@ip instead of pi@).
 
 Solution: Install qt files manually on image and connect through ethernet.
