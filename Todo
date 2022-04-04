@@ -1,3 +1,10 @@
 Todo:
 1. Add wifi and ssh configuration files in rootfs and build.
 2. Install QT creater and find out way to deploy Qt application on yocto using ssh and Qt creater.
+3. See if wifi works with new image.
+4. Just download Qt creator on Linux and manually put the files in yocto.
+Problems:
+1. Wifi not working with Qt image.
+2. ssh not happening with ubuntu, working with putty.
+
+Solution: Install qt files manually on image and connect through ethernet.
