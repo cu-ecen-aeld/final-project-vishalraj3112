@@ -2,7 +2,11 @@ SUMMARY = "QT Example Recipe"
 LICENSE = "CLOSED"
 
 SRC_URI = "file://qtexample.pro \
-           file://qtexample.cpp"
+           file://qtexample.cpp \
+           file://qtmainwindow.cpp \
+           file://qtmainwindow.h \ 
+           file://qtmainwindow.ui \
+           file://ui_mainwindow.h"
 
 DEPENDS += "qtbase"
 
