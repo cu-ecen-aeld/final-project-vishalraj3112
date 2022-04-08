@@ -18,8 +18,9 @@ IMAGE="IMAGE_FSTYPES = \"wic.bz2\""
 MEMORY="GPU_MEM = \"16\""
 
 #--------------QT5 Support--------------------
-#Add any packages needed 
-ADD_PACK="CORE_IMAGE_EXTRA_INSTALL += \"gui\""
+#Add any packages needed
+#IMAGE_ADD="IMAGE_INSTALL:append =  \" aesd-assignments\""
+ADD_PACK="CORE_IMAGE_EXTRA_INSTALL += \" gui server\""
 
 IMAGE_ADD="IMAGE_INSTALL:append =  \"qtbase \
     qtbase-dev \
@@ -48,7 +49,8 @@ IMAGE_ADD="IMAGE_INSTALL:append =  \"qtbase \
     bridge-utils \
     hostapd \
     iptables \
-    wpa-supplicant \""
+    wpa-supplicant \
+    aesd-assignments \""
 
 #--------------QT5 Support--------------------
 
@@ -201,7 +203,7 @@ else
 	echo "layer meta-raspberrypi already exists"
 fi
 
-#Qt5
+#--------------QT5 Support--------------------
 bitbake-layers show-layers | grep "meta-multimedia" > /dev/null
 layer_info=$?
 
@@ -221,7 +223,39 @@ if [ $layer_info -ne 0 ];then
 else
 	echo "meta-gui layer already exists"
 fi
-#Qt5
+#--------------QT5 Support--------------------
+
+#--------------Socket Support--------------------
+bitbake-layers show-layers | grep "meta-aesd" > /dev/null
+layer_info=$?
+
+if [ $layer_info -ne 0 ];then
+	echo "Adding meta-aesd layer"
+	bitbake-layers add-layer ../meta-aesd
+else
+	echo "meta-aesd layer already exists"
+fi
+
+bitbake-layers show-layers | grep "meta-custom" > /dev/null
+layer_info=$?
+
+if [ $layer_info -ne 0 ];then
+	echo "Adding meta-custom layer"
+	bitbake-layers add-layer ../meta-aesd/meta-custom
+else
+	echo "meta-custom layer already exists"
+fi
+
+bitbake-layers show-layers | grep "meta-cserver" > /dev/null
+layer_info=$?
+
+if [ $layer_info -ne 0 ];then
+	echo "Adding meta-cserver layer"
+	bitbake-layers add-layer ../meta-cserver/meta-cserver
+else
+	echo "meta-cserver layer already exists"
+fi
+#--------------Socket Support--------------------
 
 set -e
 bitbake core-image-sato

@@ -4,21 +4,22 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 
 # TODO: Set this  with the path to your assignments rep.  Use ssh protocol and see lecture notes
 # about how to setup ssh-agent for passwordless access
-SRC_URI = "git://git@github.com/cu-ecen-aeld/assignments-3-and-later-vishalraj3112.git;protocol=ssh;branch=main"
+#SRC_URI = "git://github.com/cu-ecen-aeld/assignments-3-and-later-vishalraj3112.git;branch=main"
+SRC_URI = "---https://github.com/cu-ecen-aeld/assignments-3-and-later-vishalraj3112.git;branch=main"
 
 PV = "1.0+git${SRCPV}"
 # TODO: set to reference a specific commit hash in your assignment repo
-SRCREV = "8c9b76b09c69c4040ea700b603bb66daed2d8dd1"
+SRCREV = "ba6f84c4d9c512e957aa2fd771af65b7b5eb22be"
 
 # This sets your staging directory based on WORKDIR, where WORKDIR is defined at 
 # https://www.yoctoproject.org/docs/latest/ref-manual/ref-manual.html#var-WORKDIR
 # We reference the "server" directory here to build from the "server" directory
 # in your assignments repo
-S = "${WORKDIR}/git/server_new"
+S = "${WORKDIR}/git/server"
 
 # TODO: Add the aesdsocket application and any other files you need to install
 # See http://git.yoctoproject.org/cgit.cgi/poky/plain/meta/conf/bitbake.conf?h=warrior for yocto path prefixes
-FILES_${PN} += "${bindir}/aesdsocket_new"
+FILES_${PN} += "${bindir}/aesdsocket"
 
 # TODO: customize these as necessary for any libraries you need for your application
 EXTRA_OEMAKE += "'CC=${CC}'"
@@ -49,11 +50,9 @@ do_install () {
 	
 	#install dest directory /usr/bin
 	install -d ${D}${bindir}
-	#install aesdsocket_new to /usr/bin
-	install -m 0755 ${S}/aesdsocket_new ${D}${bindir}/
+	install -m 0755 ${S}/aesdsocket ${D}${bindir}/
 	
 	#install destination directory for init script
 	#install -d ${D}${sysconfdir}/init.d
-	#install start-stop script in this location
 	#install -m 0755 ${S}/aesdsocket-start-stop.sh ${D}${sysconfdir}/init.d
 }
