@@ -8,17 +8,17 @@ SRC_URI = "git://git@github.com/cu-ecen-aeld/assignments-3-and-later-vishalraj31
 
 PV = "1.0+git${SRCPV}"
 # TODO: set to reference a specific commit hash in your assignment repo
-SRCREV = "1417cbf17f220814f55bf7b2d0e3dd3af3705351"
+SRCREV = "8c9b76b09c69c4040ea700b603bb66daed2d8dd1"
 
 # This sets your staging directory based on WORKDIR, where WORKDIR is defined at 
 # https://www.yoctoproject.org/docs/latest/ref-manual/ref-manual.html#var-WORKDIR
 # We reference the "server" directory here to build from the "server" directory
 # in your assignments repo
-S = "${WORKDIR}/git/server"
+S = "${WORKDIR}/git/server_new"
 
 # TODO: Add the aesdsocket application and any other files you need to install
 # See http://git.yoctoproject.org/cgit.cgi/poky/plain/meta/conf/bitbake.conf?h=warrior for yocto path prefixes
-FILES_${PN} += "${bindir}/aesdsocket"
+FILES_${PN} += "${bindir}/aesdsocket_new"
 
 # TODO: customize these as necessary for any libraries you need for your application
 EXTRA_OEMAKE += "'CC=${CC}'"
@@ -26,9 +26,9 @@ TARGET_CC_ARCH += "${LDFLAGS}"
 TARGET_LDFLAGS += "-pthread -lrt"
 
 #Adding my part here
-inherit update-rc.d
-INITSCRIPT_PACKAGES = "${PN}"
-INITSCRIPT_NAME_${PN} = "aesdsocket-start-stop.sh"
+#inherit update-rc.d
+#INITSCRIPT_PACKAGES = "${PN}"
+#INITSCRIPT_NAME_${PN} = "aesdsocket-start-stop.sh"
 
 do_configure () {
 	:
@@ -49,11 +49,11 @@ do_install () {
 	
 	#install dest directory /usr/bin
 	install -d ${D}${bindir}
-	#install aesdsocket to /usr/bin
-	install -m 0755 ${S}/aesdsocket ${D}${bindir}/
+	#install aesdsocket_new to /usr/bin
+	install -m 0755 ${S}/aesdsocket_new ${D}${bindir}/
 	
 	#install destination directory for init script
-	install -d ${D}${sysconfdir}/init.d
+	#install -d ${D}${sysconfdir}/init.d
 	#install start-stop script in this location
-	install -m 0755 ${S}/aesdsocket-start-stop.sh ${D}${sysconfdir}/init.d
+	#install -m 0755 ${S}/aesdsocket-start-stop.sh ${D}${sysconfdir}/init.d
 }
