@@ -14,7 +14,7 @@ S = "${WORKDIR}/git/server_new"
 
 #inherit autotools
 
-FILES_${PN} += "${bindir}/server"
+FILES_${PN} += "${bindir}/aesdsocket_new"
 
 
 # TODO: customize these as necessary for any libraries you need for your application

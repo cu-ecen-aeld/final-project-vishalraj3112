@@ -20,7 +20,7 @@ MEMORY="GPU_MEM = \"16\""
 #--------------QT5 Support--------------------
 #Add any packages needed
 #IMAGE_ADD="IMAGE_INSTALL:append =  \" aesd-assignments\""
-ADD_PACK="CORE_IMAGE_EXTRA_INSTALL += \" gui server\""
+ADD_PACK="CORE_IMAGE_EXTRA_INSTALL += \" gui aesdsocket_new\""
 
 IMAGE_ADD="IMAGE_INSTALL:append =  \"qtbase \
     qtbase-dev \
