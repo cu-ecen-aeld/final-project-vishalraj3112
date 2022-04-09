@@ -19,9 +19,9 @@ MEMORY="GPU_MEM = \"16\""
 
 #--------------QT5 Support--------------------
 #Add any packages needed
-ADD_PACK="CORE_IMAGE_EXTRA_INSTALL += \" gui aesdsocket\""
+ADD_PACK="CORE_IMAGE_EXTRA_INSTALL += \"aesdsocket-new cserver gui\""
 
-CORE_IM_ADD="CORE_IMAGE_EXTRA_INSTALL += \"aesdsocket_new\""
+#CORE_IM_ADD="CORE_IMAGE_EXTRA_INSTALL += \"aesdsocket-new\""
 
 IMAGE_ADD="IMAGE_INSTALL:append =  \"qtbase \
     qtbase-dev \
@@ -50,9 +50,10 @@ IMAGE_ADD="IMAGE_INSTALL:append =  \"qtbase \
     bridge-utils \
     hostapd \
     iptables \
-    wpa-supplicant \
-    aesd-assignments \
-    aesdsocket_new	\""
+    wpa-supplicant \""
+    #aesdsocket-new \""
+    #aesd-assignments \""
+    #aesdsocket_new  \""
 
 #--------------QT5 Support--------------------
 
@@ -229,24 +230,24 @@ fi
 
 #--------------Socket Support--------------------
 
-bitbake-layers show-layers | grep "meta-aesd" > /dev/null
+bitbake-layers show-layers | grep "meta-cserver" > /dev/null
 layer_info=$?
 
 if [ $layer_info -ne 0 ];then
-	echo "Adding meta-aesd layer"
-	bitbake-layers add-layer ../meta-aesd
+	echo "Adding meta-cserver layer"
+	bitbake-layers add-layer ../meta-cserver
 else
-	echo "meta-aesd layer already exists"
+	echo "meta-cserver layer already exists"
 fi
 
-bitbake-layers show-layers | grep "meta-aesdsocket_new" > /dev/null
+bitbake-layers show-layers | grep "meta-aesdsocket-new" > /dev/null
 layer_info=$?
 
 if [ $layer_info -ne 0 ];then
-	echo "Adding meta-aesdsocket_new layer"
-	bitbake-layers add-layer ../meta-aesdsocket_new
+	echo "Adding meta-aesdsocket-new layer"
+	bitbake-layers add-layer ../meta-aesdsocket-new
 else
-	echo "meta-aesdsocket_new layer already exists"
+	echo "meta-aesdsocket-new layer already exists"
 fi
 #--------------Socket Support--------------------
 
