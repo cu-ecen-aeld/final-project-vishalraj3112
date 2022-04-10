@@ -1,18 +1,21 @@
 SUMMARY = "QT Example Recipe"
 LICENSE = "CLOSED"
 
-SRC_URI = "file://qtexample.pro \
-           file://qtexample.cpp \
-           file://qtmainwindow.cpp \
-           file://qtmainwindow.h \ 
-           file://qtmainwindow.ui \
-           file://ui_mainwindow.h"
+SRC_URI = "file://SampleProject.pro \
+           file://components.cpp \
+           file://components.h \
+           file://main.cpp \ 
+           file://mainwindow.cpp \
+           file://mainwindow.h \
+           file://mainwindow.ui \
+           file://window.cpp \
+           file://window.h"
 
 DEPENDS += "qtbase"
 
 RDEPENDS_${PN} += "qtwayland"
 
-FILES_${PN} += "${bindir}/qtexample"
+FILES_${PN} += "${bindir}/SampleProject"
 
 
 S = "${WORKDIR}"
@@ -21,7 +24,7 @@ S = "${WORKDIR}"
 do_install:append () {
 
     install -d ${D}${bindir}
-    install -m 0755 qtexample ${D}${bindir}/	
+    install -m 0755 SampleProject ${D}${bindir}/	
 
 }
 
