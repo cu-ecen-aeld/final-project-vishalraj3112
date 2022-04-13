@@ -9,8 +9,8 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 SRC_URI = "git://github.com/cu-ecen-aeld/finalproject-vishal-anshul-shared.git;protocol=ssh;branch=master"
 
 PV = "1.0+git${SRCPV}"
-SRCREV = "923fe27b828c5eb962f3bede3715097b605f6c1e"
-
+#socket gui working on dummy temp data commit below
+SRCREV = "abb416c6d3c64826413bfad7deaece54ce33c2da" 
 S = "${WORKDIR}/git/client"
 
 

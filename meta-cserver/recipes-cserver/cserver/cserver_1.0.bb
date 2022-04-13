@@ -6,13 +6,10 @@
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-#SRC_URI = "git://github.com/cu-ecen-aeld/assignments-3-and-later-vishalraj3112.git;protocol=ssh;branch=main"
-SRC_URI = "git://github.com/cu-ecen-aeld/finalproject-vishal-anshul-shared.git;protocol=ssh;branch=main"
-
+SRC_URI = "git://github.com/cu-ecen-aeld/finalproject-vishal-anshul-shared.git;protocol=ssh;branch=master"
 
 PV = "1.0+git${SRCPV}"
-#SRCREV = "8c9b76b09c69c4040ea700b603bb66daed2d8dd1"
-SRCREV = "1d995b4d53bd92ef2487bb9e3af740772b6fcb39"
+SRCREV = "abb416c6d3c64826413bfad7deaece54ce33c2da"
 
 S = "${WORKDIR}/git/server-new"
 
@@ -37,7 +34,7 @@ do_install () {
 	
 	#install dest directory /usr/bin
 	install -d ${D}${bindir}
-	install -m 0755 ${S}/aesdsocket-new ${D}${bindir}/
+	install -m 0755 ${S}/server ${D}${bindir}/
 	
 	#install destination directory for init script
 	#install -d ${D}${sysconfdir}/init.d

@@ -19,7 +19,7 @@ MEMORY="GPU_MEM = \"16\""
 
 #--------------QT5 Support--------------------
 #Add any packages needed
-ADD_PACK="CORE_IMAGE_EXTRA_INSTALL += \"aesdsocket-new client gui\""
+ADD_PACK="CORE_IMAGE_EXTRA_INSTALL += \"cserver client gui\""
 
 #CORE_IM_ADD="CORE_IMAGE_EXTRA_INSTALL += \"aesdsocket-new\""
 
@@ -238,16 +238,6 @@ if [ $layer_info -ne 0 ];then
 	bitbake-layers add-layer ../meta-cserver
 else
 	echo "meta-cserver layer already exists"
-fi
-
-bitbake-layers show-layers | grep "meta-aesdsocket-new" > /dev/null
-layer_info=$?
-
-if [ $layer_info -ne 0 ];then
-	echo "Adding meta-aesdsocket-new layer"
-	bitbake-layers add-layer ../meta-aesdsocket-new
-else
-	echo "meta-aesdsocket-new layer already exists"
 fi
 
 bitbake-layers show-layers | grep "meta-client" > /dev/null
