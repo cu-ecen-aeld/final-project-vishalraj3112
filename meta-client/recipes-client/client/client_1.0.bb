@@ -10,7 +10,7 @@ SRC_URI = "git://github.com/cu-ecen-aeld/finalproject-vishal-anshul-shared.git;p
 
 PV = "1.0+git${SRCPV}"
 #socket gui working on dummy temp data commit below
-SRCREV = "abb416c6d3c64826413bfad7deaece54ce33c2da" 
+SRCREV = "d26018b2855250fc5f336f4a8c5234abf61986c3" 
 S = "${WORKDIR}/git/client"
 
 
