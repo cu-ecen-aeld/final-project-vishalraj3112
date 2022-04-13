@@ -9,7 +9,9 @@ SRC_URI = "file://SampleProject.pro \
            file://mainwindow.h \
            file://mainwindow.ui \
            file://window.cpp \
-           file://window.h"
+           file://window.h \
+           file://file-reader.h \
+           file://file-reader.cpp"
 
 DEPENDS += "qtbase"
 
