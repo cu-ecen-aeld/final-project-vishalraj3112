@@ -19,9 +19,9 @@ MEMORY="GPU_MEM = \"16\""
 
 #--------------QT5 Support--------------------
 #Add any packages needed
-ADD_PACK="CORE_IMAGE_EXTRA_INSTALL += \"cserver client gui\""
+ADD_PACK="CORE_IMAGE_EXTRA_INSTALL += \"cserver client gui gpio\""
 
-#CORE_IM_ADD="CORE_IMAGE_EXTRA_INSTALL += \"aesdsocket-new\""
+#CORE_IM_ADD="CORE_IMAGE_EXTRA_INSTALL += \"gpio-config\""
 
 IMAGE_ADD="IMAGE_INSTALL:append =  \"qtbase \
     qtbase-dev \
@@ -251,6 +251,20 @@ else
 fi
 
 #--------------Socket Support--------------------
+
+#--------------GPIO Support--------------------
+
+bitbake-layers show-layers | grep "meta-gpio" > /dev/null
+layer_info=$?
+
+if [ $layer_info -ne 0 ];then
+	echo "Adding meta-gpio layer"
+	bitbake-layers add-layer ../meta-gpio
+else
+	echo "meta-gpio layer already exists"
+fi
+
+#--------------GPIO Support--------------------
 
 set -e
 bitbake core-image-sato
