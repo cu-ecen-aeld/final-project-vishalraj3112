@@ -35,7 +35,7 @@ cat ${dupli_file} > ${ogi_file}
 rm -f ${dupli_file}
 
 #Todo: Modify GUI recipie
-
+python recepie_modify.py
 
 #Todo: Read the ip address from user
 

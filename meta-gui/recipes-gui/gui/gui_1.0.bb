@@ -1,36 +1,30 @@
 SUMMARY = "QT Example Recipe"
 LICENSE = "CLOSED"
 
-SRC_URI = "file://SampleProject.pro \
-	   file://SampleProject.pro.user \
-           file://components.cpp \
-           file://components.h \
-           file://main.cpp \ 
-           file://mainwindow.cpp \
-           file://mainwindow.h \
-           file://mainwindow.ui \
-           file://window.cpp \
-           file://window.h \
-           file://file-reader.h \
-           file://file-reader.cpp"
+SRC_URI = "file://window.h \ 
+	file://file-reader.cpp \ 
+	file://mainwindow.ui \ 
+	file://main.cpp \ 
+	file://window.cpp \ 
+	file://SampleProject.pro.user \ 
+	file://components.h \ 
+	file://mainwindow.cpp \ 
+	file://components.cpp \ 
+	file://file-reader.h \ 
+	file://SampleProject.pro \ 
+	file://mainwindow.h"
 
-DEPENDS += "qtbase"
+DEPENDS += "qtbase" 
 
-RDEPENDS_${PN} += "qtwayland"
+RDEPENDS_${PN} += "qtwayland" 
 
-FILES_${PN} += "${bindir}/SampleProject"
+FILES_${PN} += "${bindir}/SampleProject" 
 
-
-S = "${WORKDIR}"
-
+S = "${WORKDIR}" 
 
 do_install:append () {
-
-    install -d ${D}${bindir}
-    install -m 0755 SampleProject ${D}${bindir}/	
-
-}
-
-
+	 install -d ${D}${bindir} 
+	 install -m 0755 SampleProject ${D}${bindir}/
+} 
 
 inherit qmake5
