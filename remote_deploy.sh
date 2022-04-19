@@ -61,5 +61,23 @@ if [ $ret_val -ne 0 ]; then
 	echo "ERROR:scp failed! Check source path and target ip address."
 	exit $ret_val
 else
-	echo "GUI application deployed! Now run the application on target."
+	echo "##GUI application deployed!##"
 fi
+
+echo "################## Running the application #####################"
+
+#Transfer the start app script first
+scp gui_startup.sh root@10.0.0.120:/usr/bin
+ret_val=$?
+
+if [ $ret_val -ne 0 ]; then
+	echo "ERROR:scp failed! Check source path and target ip address."
+	exit $ret_val
+else
+	echo "##Startup script transferred##"
+fi
+
+#Then start the gui app
+ssh root@10.0.0.120 '/usr/bin/gui_startup.sh'
+
+
