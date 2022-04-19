@@ -2,7 +2,6 @@ SUMMARY = "QT Example Recipe"
 LICENSE = "CLOSED"
 
 SRC_URI = "file://SampleProject.pro \
-	   file://SampleProject.pro.user \
            file://components.cpp \
            file://components.h \
            file://main.cpp \ 

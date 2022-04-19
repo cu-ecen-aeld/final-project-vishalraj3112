@@ -30,4 +30,3 @@ HEADERS += \
 
 FORMS += \
     mainwindow.ui
-
