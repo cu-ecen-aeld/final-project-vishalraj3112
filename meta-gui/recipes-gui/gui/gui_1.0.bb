@@ -24,7 +24,7 @@ S = "${WORKDIR}"
 
 # Build-time dependency
 DEPENDS += "libgpiod"
-#TARGET_LDFLAGS += "-lgpiod"
+TARGET_LDFLAGS += "-lgpiod"
 
 do_install:append () {
 	 install -d ${D}${bindir} 
