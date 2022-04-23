@@ -22,6 +22,10 @@ FILES_${PN} += "${bindir}/SampleProject"
 
 S = "${WORKDIR}" 
 
+# Build-time dependency
+DEPENDS += "libgpiod"
+#TARGET_LDFLAGS += "-lgpiod"
+
 do_install:append () {
 	 install -d ${D}${bindir} 
 	 install -m 0755 SampleProject ${D}${bindir}/

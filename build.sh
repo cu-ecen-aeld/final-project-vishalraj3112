@@ -206,6 +206,20 @@ else
 	echo "layer meta-raspberrypi already exists"
 fi
 
+#--------------GPIO Support--------------------
+
+bitbake-layers show-layers | grep "meta-gpio" > /dev/null
+layer_info=$?
+
+if [ $layer_info -ne 0 ];then
+	echo "Adding meta-gpio layer"
+	bitbake-layers add-layer ../meta-gpio
+else
+	echo "meta-gpio layer already exists"
+fi
+
+#--------------GPIO Support--------------------
+
 #--------------QT5 Support--------------------
 bitbake-layers show-layers | grep "meta-multimedia" > /dev/null
 layer_info=$?
@@ -252,19 +266,7 @@ fi
 
 #--------------Socket Support--------------------
 
-#--------------GPIO Support--------------------
 
-bitbake-layers show-layers | grep "meta-gpio" > /dev/null
-layer_info=$?
-
-if [ $layer_info -ne 0 ];then
-	echo "Adding meta-gpio layer"
-	bitbake-layers add-layer ../meta-gpio
-else
-	echo "meta-gpio layer already exists"
-fi
-
-#--------------GPIO Support--------------------
 
 set -e
 bitbake core-image-sato

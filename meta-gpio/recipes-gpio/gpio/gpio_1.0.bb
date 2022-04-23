@@ -12,7 +12,7 @@ S = "${WORKDIR}"
 
 FILES_${PN} += "${bindir}/gpioreadtest"
 FILES_${PN} += "${bindir}/gpiowritetest"
-#FILES_${PN} += "${bindir}/gpio"
+FILES_${PN} += "${bindir}/gpio"
 
 # Build-time dependency
 DEPENDS = "libgpiod"
