@@ -30,7 +30,8 @@ for f in files:
 	file1.writelines(string)
 
 last_string = "DEPENDS += \"qtbase\" \n\nRDEPENDS_${PN} += \"qtwayland\" \n\n\
-FILES_${PN} += \"${bindir}/SampleProject\" \n\nS = \"${WORKDIR}\" \n\n\
+FILES_${PN} += \"${bindir}/SampleProject\" \n\nS = \"${WORKDIR}\" \n\
+DEPENDS += \"libgpiod\"\nTARGET_LDFLAGS += \"-lgpiod\"\n\n\
 do_install:append () {\n\t install -d ${D}${bindir} \n\t install -m 0755 SampleProject ${D}${bindir}/\n} \
 \n\ninherit qmake5"
 

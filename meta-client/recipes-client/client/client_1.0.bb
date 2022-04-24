@@ -10,9 +10,9 @@ SRC_URI = "git://github.com/cu-ecen-aeld/finalproject-vishal-anshul-shared.git;p
 
 PV = "1.0+git${SRCPV}"
 #server ip client code below
-#SRCREV = "797aa06ba0951f4359823e2c4e39f44930c6d3cf" 
+SRCREV = "8e6b8dcb4dcaec60dca1301395a730f25737dc7b" 
 #loopback client code below
-SRCREV = "8e7b1e106f062885792ec23ded53200332fff0e2" 
+#SRCREV = "52d74adfd23d9ee08a7d6eb075bff6531cdf6763" 
 S = "${WORKDIR}/git/client"
 
 

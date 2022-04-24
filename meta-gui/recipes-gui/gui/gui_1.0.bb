@@ -21,8 +21,6 @@ RDEPENDS_${PN} += "qtwayland"
 FILES_${PN} += "${bindir}/SampleProject" 
 
 S = "${WORKDIR}" 
-
-# Build-time dependency
 DEPENDS += "libgpiod"
 TARGET_LDFLAGS += "-lgpiod"
 

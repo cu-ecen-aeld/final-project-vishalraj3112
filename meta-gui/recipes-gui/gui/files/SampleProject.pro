@@ -30,6 +30,6 @@ HEADERS += \
 
 FORMS += \
     mainwindow.ui
-    
+
 LIBS += -lgpiod
 
